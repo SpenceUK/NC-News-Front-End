@@ -1,25 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import ArticleCardCollection from '../components/ArticleCardCollection';
 
 class HomePage extends React.Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.state = {
+      articles: [
+        { title: 'Article One', votes: 6, text: 'This is the article.' },
+        { title: 'Article Two', votes: 61, text: 'This is the article text.' },
+        {
+          title: 'Article 3',
+          votes: 16,
+          text:
+            'This is the article text that is the longest of all the articles.'
+        }
+      ]
+    };
+  }
+
+  componentDidMount() {
+    // fetch articles using /api/articles
+  }
+
   render() {
-    return (
-      <div className="container">
-        <div>
-          Articles
-          <Link to="/articles/articleId">
-            <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">Article Title</h5>
-                <h6 className="card-subtitle mb-2 text-muted">Votes: ??</h6>
-                <p className="card-text">Article text snippet.....</p>
-              </div>
-            </div>
-          </Link>
-        </div>
-      </div>
-    );
+    return <ArticleCardCollection articles={this.state.articles} />;
   }
 }
 export default HomePage;
