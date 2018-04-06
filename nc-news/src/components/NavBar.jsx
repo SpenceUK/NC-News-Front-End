@@ -1,9 +1,23 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import splash from '../images/northcoder-splash.png';
+import TopicButtonCollection from './TopicButtonCollection';
 
 class NavBar extends React.Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.state = {
+      topics: [
+        { title: 'Football', id: 121242346 },
+        { title: 'Coding', id: 23434234261 },
+        { title: 'Cooking', id: 1234234134116 }
+      ]
+    };
+  }
+  componentDidMount() {
+    //fetch topics using /api/topics
+  }
+
   render() {
     return (
       <nav className="navbar navbar-light bg-primary">
@@ -13,28 +27,7 @@ class NavBar extends React.Component {
           src={splash}
           alt="north coders news logo"
         />
-        <ul class="nav nav-tabs color-white">
-          <li class="nav-item">
-            <NavLink to="/" class="nav-link text-white">
-              All
-            </NavLink>
-          </li>
-          <li class="nav-item">
-            <NavLink to="" class="nav-link text-white">
-              topic 1
-            </NavLink>
-          </li>
-          <li class="nav-item">
-            <NavLink to="" class="nav-link text-white">
-              topic 2
-            </NavLink>
-          </li>
-          <li class="nav-item">
-            <NavLink to="" class="nav-link text-white">
-              topic 3
-            </NavLink>
-          </li>
-        </ul>
+        <TopicButtonCollection topics={this.state.topics} />
       </nav>
     );
   }

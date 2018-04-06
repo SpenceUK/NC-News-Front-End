@@ -1,7 +1,7 @@
 import React from 'react';
 import ArticleCardCollection from '../components/ArticleCardCollection';
 
-class HomePage extends React.Component {
+class AllArticlesPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,4 +26,4 @@ class HomePage extends React.Component {
     return <ArticleCardCollection articles={this.state.articles} />;
   }
 }
-export default HomePage;
+export default AllArticlesPage;
