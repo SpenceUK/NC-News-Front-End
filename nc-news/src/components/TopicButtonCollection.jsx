@@ -2,17 +2,28 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import TopicButton from './TopicButton';
 
-const TopicButtonCollection = ({ topics }) => (
-  <div className="d-inline">
-    <NavLink to="/" className="nav-link nav-item d-inline">
-      <button type="button" className="btn btn-outline btn-info">
-        All
-      </button>
-    </NavLink>
-    {topics.map(topic => {
-      return <TopicButton topic={topic} />;
-    })}
-  </div>
-);
+const TopicButtonCollection = ({ topics, updateArticlesState }) => {
+  const handleClick = event => {
+    if (event.id === 'All') updateArticlesState(null);
+    else updateArticlesState(event.target.id);
+  };
+  return (
+    <div className="d-inline">
+      <NavLink to="/" className="d-inline">
+        <button
+          id="All"
+          type="button"
+          onClick={handleClick}
+          className="btn btn-outline btn-info"
+        >
+          All
+        </button>
+      </NavLink>
+      {topics.map((topic, i) => {
+        return <TopicButton key={i} topic={topic} handleClick={handleClick} />;
+      })}
+    </div>
+  );
+};
 
 export default TopicButtonCollection;

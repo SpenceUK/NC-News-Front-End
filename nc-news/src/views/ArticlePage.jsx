@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Article from '../components/Article';
 import NewComment from '../components/NewComment';
 import CommentCardCollection from '../components/CommentCardCollection';

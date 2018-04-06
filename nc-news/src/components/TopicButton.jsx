@@ -1,12 +1,14 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-const TopicButton = ({ topic }) => (
-  <NavLink
-    to={`/topics/${topic.id}/articles`}
-    className="nav-link nav-item d-inline"
-  >
-    <button type="button" className="btn btn-outline btn-info">
+const TopicButton = ({ topic, handleClick }) => (
+  <NavLink to="/" className="d-inline">
+    <button
+      id={topic._id}
+      type="button"
+      onClick={handleClick}
+      className="btn btn-outline btn-info"
+    >
       {topic.title}
     </button>
   </NavLink>

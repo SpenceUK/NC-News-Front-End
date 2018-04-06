@@ -7,14 +7,36 @@ class NavBar extends React.Component {
     super(props);
     this.state = {
       topics: [
-        { title: 'Football', id: 121242346 },
-        { title: 'Coding', id: 23434234261 },
-        { title: 'Cooking', id: 1234234134116 }
+        { title: 'loading', id: 121242346 },
+        { title: 'loading', id: 23434234261 },
+        { title: 'loading', id: 1234234134116 }
       ]
     };
   }
   componentDidMount() {
     //fetch topics using /api/topics
+    this.setState({
+      topics: [
+        {
+          _id: '5ac0fa41cd94071068f378db',
+          title: 'Coding',
+          slug: 'coding',
+          __v: 0
+        },
+        {
+          _id: '5ac0fa41cd94071068f378dc',
+          title: 'Football',
+          slug: 'football',
+          __v: 0
+        },
+        {
+          _id: '5ac0fa41cd94071068f378dd',
+          title: 'Cooking',
+          slug: 'cooking',
+          __v: 0
+        }
+      ]
+    });
   }
 
   render() {
@@ -26,7 +48,10 @@ class NavBar extends React.Component {
           src={splash}
           alt="north coders news logo"
         />
-        <TopicButtonCollection topics={this.state.topics} />
+        <TopicButtonCollection
+          topics={this.state.topics}
+          updateArticlesState={this.props.updateArticlesState}
+        />
       </nav>
     );
   }
