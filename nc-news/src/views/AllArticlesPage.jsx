@@ -6,13 +6,24 @@ class AllArticlesPage extends React.Component {
     super(props);
     this.state = {
       articles: [
-        { title: 'Article One', votes: 6, text: 'This is the article.' },
-        { title: 'Article Two', votes: 61, text: 'This is the article text.' },
+        {
+          title: 'Article One',
+          votes: 6,
+          text: 'This is the article.',
+          id: '111111111'
+        },
+        {
+          title: 'Article Two',
+          votes: 61,
+          text: 'This is the article text.',
+          id: '2222222222'
+        },
         {
           title: 'Article 3',
           votes: 16,
           text:
-            'This is the article text that is the longest of all the articles.'
+            'This is the article text that is the longest of all the articles.',
+          id: '333333333'
         }
       ]
     };
