@@ -20,7 +20,7 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <nav className="navbar navbar-light bg-primary">
+      <nav className="navbar navbar-light">
         <img
           height="80%"
           width="40%"

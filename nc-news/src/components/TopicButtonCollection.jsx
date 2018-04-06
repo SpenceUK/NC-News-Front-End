@@ -3,16 +3,16 @@ import { NavLink } from 'react-router-dom';
 import TopicButton from './TopicButton';
 
 const TopicButtonCollection = ({ topics }) => (
-  <ul class="nav nav-tabs color-white">
-    <li class="nav-item">
-      <NavLink to="/" class="nav-link text-white">
+  <div className="d-inline">
+    <NavLink to="/" className="nav-link nav-item d-inline">
+      <button type="button" className="btn btn-outline btn-info">
         All
-      </NavLink>
-    </li>
+      </button>
+    </NavLink>
     {topics.map(topic => {
       return <TopicButton topic={topic} />;
     })}
-  </ul>
+  </div>
 );
 
 export default TopicButtonCollection;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ArticleCard = ({ article }) => (
-  <Link to="/articles/articleId">
+  <Link to={`/articles/${article.id}`}>
     <div className="card">
       <div className="card-body">
         <h5 className="card-title">{article.title}</h5>

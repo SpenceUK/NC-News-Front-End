@@ -2,11 +2,14 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 const TopicButton = ({ topic }) => (
-  <li class="nav-item">
-    <NavLink to={`/topics/${topic.id}/articles`} class="nav-link text-white">
+  <NavLink
+    to={`/topics/${topic.id}/articles`}
+    className="nav-link nav-item d-inline"
+  >
+    <button type="button" className="btn btn-outline btn-info">
       {topic.title}
-    </NavLink>
-  </li>
+    </button>
+  </NavLink>
 );
 
 export default TopicButton;
