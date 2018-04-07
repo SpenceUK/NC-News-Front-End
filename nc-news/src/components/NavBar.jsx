@@ -1,41 +1,16 @@
 import React from 'react';
 import splash from '../images/northcoder-splash.png';
 import TopicButtonCollection from './TopicButtonCollection';
+import DS from '../db/api';
 
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      topics: [
-        { title: 'loading', id: 121242346 },
-        { title: 'loading', id: 23434234261 },
-        { title: 'loading', id: 1234234134116 }
-      ]
-    };
+    this.state = {};
   }
   componentDidMount() {
-    //fetch topics using /api/topics
-    this.setState({
-      topics: [
-        {
-          _id: '5ac0fa41cd94071068f378db',
-          title: 'Coding',
-          slug: 'coding',
-          __v: 0
-        },
-        {
-          _id: '5ac0fa41cd94071068f378dc',
-          title: 'Football',
-          slug: 'football',
-          __v: 0
-        },
-        {
-          _id: '5ac0fa41cd94071068f378dd',
-          title: 'Cooking',
-          slug: 'cooking',
-          __v: 0
-        }
-      ]
+    DS.getAllTopics().then(topics => {
+      this.setState({ topics: topics });
     });
   }
 
@@ -48,10 +23,14 @@ class NavBar extends React.Component {
           src={splash}
           alt="north coders news logo"
         />
-        <TopicButtonCollection
-          topics={this.state.topics}
-          updateArticlesState={this.props.updateArticlesState}
-        />
+        {this.state.topics ? (
+          <TopicButtonCollection
+            topics={this.state.topics}
+            updateArticlesState={this.props.updateArticlesState}
+          />
+        ) : (
+          <div>Loading Topics...</div>
+        )}
       </nav>
     );
   }

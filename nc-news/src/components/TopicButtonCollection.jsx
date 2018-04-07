@@ -4,7 +4,7 @@ import TopicButton from './TopicButton';
 
 const TopicButtonCollection = ({ topics, updateArticlesState }) => {
   const handleClick = event => {
-    if (event.id === 'All') updateArticlesState(null);
+    if (event.id === 'All') updateArticlesState();
     else updateArticlesState(event.target.id);
   };
   return (
