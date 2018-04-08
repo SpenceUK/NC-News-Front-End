@@ -14,8 +14,14 @@ class CommentPage extends React.Component {
     });
   }
 
-  voteOnComment = event => {
-    event.preventDefault();
+  voteOnComment = (comment_id, query) => {
+    DS.voteOnComment(comment_id, query).then(response => {
+      if (response.status === 204) {
+        DS.getCommentById(this.props.match.params.comment_id).then(comment => {
+          this.setState({ comment });
+        });
+      }
+    });
   };
 
   deleteComment = comment_id => {

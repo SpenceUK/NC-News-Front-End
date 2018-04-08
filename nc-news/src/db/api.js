@@ -37,6 +37,11 @@ const dataSource = {
     return Axios.delete(`${dataSourceURL}comments/${comment_id}`).then(
       response => response
     );
+  },
+  voteOnComment: (comment_id, query) => {
+    return Axios.put(
+      `${dataSourceURL}comments/${comment_id}?vote=${query}`
+    ).then(response => response);
   }
 };
 
