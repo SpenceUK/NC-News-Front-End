@@ -32,7 +32,7 @@ class App extends React.Component {
     }
   };
 
-  getArticleById = article_id => {
+  getArticleFromStateById = article_id => {
     return this.state.articles.filter(article => article._id === article_id);
   };
 
@@ -49,7 +49,7 @@ class App extends React.Component {
                 <AllArticlesPage
                   {...props}
                   articles={this.state.articles}
-                  getArticleById={this.getArticleById}
+                  getArticleFromStateById={this.getArticleFromStateById}
                 />
               );
             }}
@@ -58,7 +58,10 @@ class App extends React.Component {
             path="/articles/:article_id"
             render={props => {
               return (
-                <ArticlePage {...props} getArticleById={this.getArticleById} />
+                <ArticlePage
+                  {...props}
+                  getArticleFromStateById={this.getArticleFromStateById}
+                />
               );
             }}
           />
