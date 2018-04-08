@@ -7,9 +7,15 @@ class NewComment extends React.Component {
   };
 
   handleClick = event => {
-    this.props.postNewComment({
-      comment: this.state.value
+    this.props.postNewComment(this.state.article_id, {
+      comment: this.state.value,
+      created_by: '5ac91ebd13c0e94d169413ea'
     });
+    this.setState({ value: '' });
+  };
+
+  handleChange = event => {
+    this.setState({ value: event.target.value });
   };
 
   render() {
@@ -21,11 +27,13 @@ class NewComment extends React.Component {
           id="comment"
           cols="60"
           rows="5"
+          value={this.state.value}
+          onChange={this.handleChange}
         />
         <br />
         <button
           type="button"
-          onClick={this.props.postNewComment}
+          onClick={this.handleClick}
           className="btn btn-success"
         >
           Post

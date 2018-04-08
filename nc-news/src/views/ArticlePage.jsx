@@ -22,8 +22,20 @@ class ArticlePage extends React.Component {
     });
   }
 
-  postNewComment = comment => {
-    // add comment
+  postNewComment = (article_id, comment) => {
+    DS.postNewComment(article_id, comment)
+      .then(response => {
+        if (response.status === 201) {
+          DS.getArticleById(this.props.match.params.article_id).then(
+            article => {
+              this.setState({
+                article: article
+              });
+            }
+          );
+        }
+      })
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -32,8 +44,8 @@ class ArticlePage extends React.Component {
         <div className="container-fluid">
           <Article article={this.state.article} />
           <NewComment
-            postNewComment={this.postNewComment}
             article_id={this.state.article._id}
+            postNewComment={this.postNewComment}
           />
           <hr />
           <CommentCardCollection comments={this.state.article.Comments} />;

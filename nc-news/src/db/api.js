@@ -3,9 +3,9 @@ import Axios from 'axios';
 const dataSourceURL = 'https://lychee-surprise-60785.herokuapp.com/api/';
 const dataSource = {
   getAllArticles: () => {
-    return Axios(dataSourceURL + 'articles').then(response => {
-      return response.data.articles;
-    });
+    return Axios(dataSourceURL + 'articles').then(
+      response => response.data.articles
+    );
   },
   getArticleById: article_id => {
     return Axios(`${dataSourceURL}articles/${article_id}/comments`).then(
@@ -14,15 +14,19 @@ const dataSource = {
   },
   getArticlesByTopicId: topic_id => {
     return Axios(`${dataSourceURL}topics/${topic_id}/articles`).then(
-      response => {
-        return response.data.articles;
-      }
+      response => response.data.articles
     );
   },
   getAllTopics: () => {
-    return Axios(dataSourceURL + 'topics').then(response => {
-      return response.data.topics;
-    });
+    return Axios(`${dataSourceURL}topics`).then(
+      response => response.data.topics
+    );
+  },
+  postNewComment: (article_id, comment) => {
+    return Axios.post(
+      `${dataSourceURL}articles/${article_id}/comments`,
+      comment
+    ).then(response => response);
   }
 };
 
