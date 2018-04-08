@@ -27,6 +27,16 @@ const dataSource = {
       `${dataSourceURL}articles/${article_id}/comments`,
       comment
     ).then(response => response);
+  },
+  getCommentById: comment_id => {
+    return Axios(`${dataSourceURL}comments/${comment_id}`).then(
+      response => response.data.comment
+    );
+  },
+  deleteCommentById: comment_id => {
+    return Axios.delete(`${dataSourceURL}comments/${comment_id}`).then(
+      response => response
+    );
   }
 };
 
