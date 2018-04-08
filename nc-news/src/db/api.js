@@ -12,6 +12,11 @@ const dataSource = {
       response => response.data.article
     );
   },
+  voteOnArticle: (article_id, query) => {
+    return Axios.put(
+      `${dataSourceURL}articles/${article_id}?vote=${query}`
+    ).then(response => response);
+  },
   getArticlesByTopicId: topic_id => {
     return Axios(`${dataSourceURL}topics/${topic_id}/articles`).then(
       response => response.data.articles
@@ -42,6 +47,11 @@ const dataSource = {
     return Axios.put(
       `${dataSourceURL}comments/${comment_id}?vote=${query}`
     ).then(response => response);
+  },
+  getUser: username => {
+    return Axios(`${dataSourceURL}users/${username}`).then(
+      response => response
+    );
   }
 };
 

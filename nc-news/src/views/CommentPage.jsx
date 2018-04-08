@@ -1,15 +1,15 @@
 import React from 'react';
-import Comment from '../components/Comment';
+import Comment from '../components/CommentComponents/Comment';
 import DS from '../db/api';
-import VoteButtonCollection from '../components/VoteButtonCollection';
-import CommentDeletButton from '../components/CommentDeleteButton';
+import CommentVoteButtonCollection from '../components/CommentComponents/CommentVoteButtonCollection';
+import CommentDeleteButton from '../components/CommentComponents/CommentDeleteButton';
 
 class CommentPage extends React.Component {
   componentDidMount() {
     DS.getCommentById(this.props.match.params.comment_id).then(comment => {
       this.setState({
         comment,
-        current_user_id: '5ac91ebd13c0e94d169413ea'
+        current_user: JSON.parse(localStorage.getItem('user'))
       });
     });
   }
@@ -38,13 +38,13 @@ class CommentPage extends React.Component {
         <div className="container">
           <Comment comment={this.state.comment} />
           <div className="d-flex justify-content-between">
-            <VoteButtonCollection
+            <CommentVoteButtonCollection
               comment_id={this.state.comment._id}
               voteOnComment={this.voteOnComment}
             />
             {this.state.comment.created_by._id ===
-            this.state.current_user_id ? (
-              <CommentDeletButton
+            this.state.current_user._id ? (
+              <CommentDeleteButton
                 deleteComment={this.deleteComment}
                 comment_id={this.state.comment._id}
               />

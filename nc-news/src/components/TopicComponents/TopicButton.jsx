@@ -7,7 +7,7 @@ const TopicButton = ({ topic, handleClick }) => (
       id={topic._id}
       type="button"
       onClick={handleClick}
-      className="btn btn-outline btn-info"
+      className="btn btn-outline btn-info mx-1"
     >
       {topic.title}
     </button>

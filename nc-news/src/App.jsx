@@ -18,6 +18,9 @@ class App extends React.Component {
     DS.getAllArticles().then(articles => {
       this.setState({ articles: articles });
     });
+    DS.getUser('northcoders').then(response => {
+      localStorage.setItem('user', JSON.stringify(response.data.user));
+    });
   }
 
   updateArticlesState = (topic_id = 'All') => {
@@ -65,7 +68,6 @@ class App extends React.Component {
               );
             }}
           />
-          {/* <Route path="/articles/:article_id" component={ArticlePage} /> */}
           <Route path="/comments/:comment_id" component={CommentPage} />
         </div>
       </Router>

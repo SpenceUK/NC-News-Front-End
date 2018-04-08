@@ -1,6 +1,6 @@
 import React from 'react';
 import splash from '../images/northcoder-splash.png';
-import TopicButtonCollection from './TopicButtonCollection';
+import TopicButtonCollection from './TopicComponents/TopicButtonCollection';
 import DS from '../db/api';
 
 class NavBar extends React.Component {

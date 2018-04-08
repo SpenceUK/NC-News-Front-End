@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CommentDeletButton = ({ deleteComment, comment_id }) => {
+const CommentDeleteButton = ({ deleteComment, comment_id }) => {
   const handleClick = event => {
     deleteComment(comment_id);
   };
@@ -18,4 +18,4 @@ const CommentDeletButton = ({ deleteComment, comment_id }) => {
   );
 };
 
-export default CommentDeletButton;
+export default CommentDeleteButton;

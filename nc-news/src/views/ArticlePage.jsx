@@ -1,8 +1,9 @@
 import React from 'react';
-import Article from '../components/Article';
-import NewComment from '../components/NewComment';
-import CommentCardCollection from '../components/CommentCardCollection';
+import Article from '../components/ArticleComponents/Article';
+import NewComment from '../components/CommentComponents/NewComment';
+import CommentCardCollection from '../components/CommentComponents/CommentCardCollection';
 import DS from '../db/api';
+import ArticleVoteButtonCollection from '../components/ArticleComponents/ArticleVoteButtonCollection';
 
 class ArticlePage extends React.Component {
   constructor(props) {
@@ -21,6 +22,16 @@ class ArticlePage extends React.Component {
       });
     });
   }
+
+  voteOnArticle = (article_id, query) => {
+    DS.voteOnArticle(article_id, query).then(response => {
+      if (response.status === 204) {
+        DS.getArticleById(this.props.match.params.article_id).then(article => {
+          this.setState({ article });
+        });
+      }
+    });
+  };
 
   postNewComment = (article_id, comment) => {
     DS.postNewComment(article_id, comment)
@@ -43,10 +54,18 @@ class ArticlePage extends React.Component {
       return (
         <div className="container-fluid">
           <Article article={this.state.article} />
-          <NewComment
-            article_id={this.state.article._id}
-            postNewComment={this.postNewComment}
-          />
+          <div className="d-flex justify-content-between mb-3">
+            <ArticleVoteButtonCollection
+              article_id={this.props.match.params.article_id}
+              voteOnArticle={this.voteOnArticle}
+            />
+          </div>
+          <div className="container">
+            <NewComment
+              article_id={this.state.article._id}
+              postNewComment={this.postNewComment}
+            />
+          </div>
           <hr />
           <CommentCardCollection comments={this.state.article.Comments} />;
         </div>

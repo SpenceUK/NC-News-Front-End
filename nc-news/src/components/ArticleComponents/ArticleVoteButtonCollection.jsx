@@ -1,13 +1,13 @@
 import React from 'react';
 
-class VoteButtonCollection extends React.Component {
+class ArticleVoteButtonCollection extends React.Component {
   constructor(props) {
     super(props);
     this.state = { disabled: false };
   }
   handleClick = event => {
     const query = event.target.id;
-    this.props.voteOnComment(this.props.comment_id, query);
+    this.props.voteOnArticle(this.props.article_id, query);
     this.setState({ disabled: true });
   };
 
@@ -36,4 +36,4 @@ class VoteButtonCollection extends React.Component {
     );
   }
 }
-export default VoteButtonCollection;
+export default ArticleVoteButtonCollection;
