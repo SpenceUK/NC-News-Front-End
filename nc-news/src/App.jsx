@@ -1,25 +1,36 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import NavBar from './components/NavBar';
 import AllArticlesPage from './views/AllArticlesPage';
 import ArticlePage from './views/ArticlePage';
 import CommentPage from './views/CommentPage';
+import UserSplash from './components/UserSplash';
+import UserPage from './views/UsersPage';
+
 import DS from './db/api';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      user: {
+        name: '',
+        username: '',
+        avatar_url:
+          'https://images.unsplash.com/photo-1491312192171-a977f62f3edc?ixlib=rb-0.3.5&s=617cb98a667d47da914eb0dbf35faeb1&auto=format&fit=crop&w=2306&q=80'
+      },
       articles: []
     };
   }
 
   componentDidMount() {
-    DS.getAllArticles().then(articles => {
-      this.setState({ articles: articles });
-    });
     DS.getUser('northcoders').then(response => {
       localStorage.setItem('user', JSON.stringify(response.data.user));
+      this.setState({ user: response.data.user });
+    });
+    DS.getAllArticles().then(articles => {
+      this.setState({ articles: articles });
     });
   }
 
@@ -42,7 +53,8 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <div className="container">
+        <div className="container mt-0">
+          <UserSplash user={this.state.user} />
           <NavBar updateArticlesState={this.updateArticlesState} />
           <Route
             exact
@@ -69,6 +81,7 @@ class App extends React.Component {
             }}
           />
           <Route path="/comments/:comment_id" component={CommentPage} />
+          <Route path="/users" component={UserPage} />
         </div>
       </Router>
     );

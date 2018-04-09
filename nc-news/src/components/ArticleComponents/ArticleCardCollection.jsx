@@ -4,7 +4,7 @@ import ArticleCard from './ArticleCard';
 const ArticleCardCollection = ({ articles }) => {
   if (articles.length) {
     return (
-      <div className="container">
+      <div className="container mt-2">
         {articles.map(article => {
           return <ArticleCard key={article._id} article={article} />;
         })}

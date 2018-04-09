@@ -16,7 +16,7 @@ const TopicButtonCollection = ({ topics, updateArticlesState }) => {
           onClick={handleClick}
           className="btn btn-outline btn-info"
         >
-          All
+          Home
         </button>
       </NavLink>
       {topics.map((topic, i) => {

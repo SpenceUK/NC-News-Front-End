@@ -52,6 +52,9 @@ const dataSource = {
     return Axios(`${dataSourceURL}users/${username}`).then(
       response => response
     );
+  },
+  getPopularUsers: () => {
+    return Axios(`${dataSourceURL}users/`).then(response => response);
   }
 };
 
