@@ -34,7 +34,7 @@ class NewComment extends React.Component {
         <button
           type="button"
           onClick={this.handleClick}
-          className="btn btn-success"
+          className="btn btn-success ml-2"
         >
           Post
         </button>

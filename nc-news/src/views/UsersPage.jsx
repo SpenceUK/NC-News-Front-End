@@ -1,5 +1,6 @@
 import React from 'react';
 import UserCardCollection from '../components/UserCardCollection';
+import Filter from '../components/Filter';
 import DS from '../db/api';
 
 class UsersPage extends React.Component {
@@ -46,7 +47,12 @@ class UsersPage extends React.Component {
   }
   render() {
     if (this.state) {
-      return <UserCardCollection users={this.state.data} />;
+      return (
+        <div className="container">
+          <Filter />
+          <UserCardCollection users={this.state.data} />;
+        </div>
+      );
     } else {
       return <div className="conatainer">Loading....</div>;
     }

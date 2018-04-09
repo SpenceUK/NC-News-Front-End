@@ -1,8 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import splash from '../images/northcoder-splash.png';
 import TopicButtonCollection from './TopicComponents/TopicButtonCollection';
+import Filter from './Filter';
 import DS from '../db/api';
+
+const navStyle = {
+  top: '-2px'
+};
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -17,7 +22,10 @@ class NavBar extends React.Component {
 
   render() {
     return (
-      <nav className="navbar navbar-light sticky-top bg-white mt-0">
+      <nav
+        style={navStyle}
+        className="navbar navbar-light sticky-top bg-white mt-0"
+      >
         <img
           height="80%"
           width="40%"
@@ -31,7 +39,6 @@ class NavBar extends React.Component {
                 <a
                   className="nav-link dropdown-toggle"
                   data-toggle="dropdown"
-                  href="#"
                   role="button"
                   aria-haspopup="true"
                   aria-expanded="false"
@@ -43,7 +50,7 @@ class NavBar extends React.Component {
                     Most Active Users
                   </Link>
                   <div className="dropdown-divider" />
-                  <p className="dropdown-item">Logout</p>
+                  <a className="dropdown-item">Logout</a>
                 </div>
               </li>
             </ul>
