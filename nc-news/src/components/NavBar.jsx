@@ -1,8 +1,7 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import splash from '../images/northcoder-splash.png';
 import TopicButtonCollection from './TopicComponents/TopicButtonCollection';
-import Filter from './Filter';
 import DS from '../db/api';
 
 const navStyle = {

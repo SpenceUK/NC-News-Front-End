@@ -26,6 +26,11 @@ class UsersPage extends React.Component {
     return 0;
   };
 
+  sortData = sortFunction => {
+    const newData = this.state.data.sort(sortFunction);
+    this.setState({ newData });
+  };
+
   componentDidMount() {
     DS.getPopularUsers().then(response => {
       const data = response.data.users;
@@ -49,7 +54,12 @@ class UsersPage extends React.Component {
     if (this.state) {
       return (
         <div className="container">
-          <Filter />
+          <Filter
+            sortData={this.sortData}
+            sortByArticles={this.sortByArticles}
+            sortByComments={this.sortByComments}
+            sortByVotes={this.sortByVotes}
+          />
           <UserCardCollection users={this.state.data} />;
         </div>
       );
