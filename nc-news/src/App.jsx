@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 import NavBar from './components/NavBar';
 import AllArticlesPage from './views/AllArticlesPage';
@@ -58,7 +58,7 @@ class App extends React.Component {
           <NavBar updateArticlesState={this.updateArticlesState} />
           <Route
             exact
-            path="/"
+            path="/articles"
             render={props => {
               return (
                 <AllArticlesPage
@@ -82,6 +82,12 @@ class App extends React.Component {
           />
           <Route path="/comments/:comment_id" component={CommentPage} />
           <Route path="/users" component={UserPage} />
+          <Route
+            path="(/article|/)"
+            render={() => {
+              return <Redirect to="/articles" />;
+            }}
+          />
         </div>
       </Router>
     );
