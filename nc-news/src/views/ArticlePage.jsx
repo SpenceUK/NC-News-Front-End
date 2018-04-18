@@ -67,7 +67,15 @@ class ArticlePage extends React.Component {
             />
           </div>
           <hr />
-          <CommentCardCollection comments={this.state.article.Comments} />;
+          <CommentCardCollection
+            comments={this.state.article.Comments.sort((a, b) => {
+              a = new Date(a.created_at).getTime();
+              b = new Date(b.created_at).getTime();
+              if (a > b) return -1;
+              if (a < b) return 1;
+              return 0;
+            })}
+          />;
         </div>
       );
     } else if (this.state.articleFromState) {

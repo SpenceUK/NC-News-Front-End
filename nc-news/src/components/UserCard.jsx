@@ -1,11 +1,10 @@
 import React from 'react';
 
 const UserCard = ({ user, pos }) => (
-  <div className="card mb-4 col-sm-12 col-xs-12 col-md-6 col-xl-3">
+  <div className="card d-inline-flex mt-3 mx-1">
     <img
-      className="card-img-top"
+      className="card-img-top rounded"
       src={user.avatar_url}
-      height="400px"
       onError={e =>
         (e.target.src =
           'https://images.unsplash.com/photo-1521687296887-5b06b3519a11?ixlib=rb-0.3.5&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;s=df38c12e6cbd222d0479a43c6f4c7ec0&amp;auto=format&amp;fit=crop&amp;w=150&amp;q=80')

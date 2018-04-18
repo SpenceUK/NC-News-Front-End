@@ -2,6 +2,7 @@ import React from 'react';
 import UserCardCollection from '../components/UserCardCollection';
 import Filter from '../components/Filter';
 import DS from '../db/api';
+import './UsersPage.css';
 
 class UsersPage extends React.Component {
   sortByVotes = (a, b) => {
